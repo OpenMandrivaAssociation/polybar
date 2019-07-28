@@ -20,8 +20,11 @@ BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(xcb-xrm)
 BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-icccm)
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  fonts-ttf-unifont
 BuildRequires:  x11-font-misc
+Requires:	fonts-ttf-unifont
+Requires:	x11-font-misc
 
 %description
 A fast and easy-to-use status bar
