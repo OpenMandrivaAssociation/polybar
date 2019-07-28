@@ -54,7 +54,7 @@ mv xpp-d2ff2aaba6489f606bbcc090c0a78a8a3f9fcd1f/ lib/xpp
 %{_bindir}/%{name}
 %{_bindir}/%{name}-msg
 %{_datadir}/doc/%{name}/config
-%{_mandir}/man1/%{name}.1*
+#% {_mandir}/man1/%{name}.1*
 %{_datadir}/bash-completion/completions/%{name}
 %{_datadir}/zsh/site-functions/_%{name}
 %{_datadir}/zsh/site-functions/_%{name}_msg
