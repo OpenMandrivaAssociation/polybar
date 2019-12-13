@@ -1,5 +1,5 @@
 Name:		polybar
-Version:	3.4.0
+Version:	3.4.1
 Release:	1
 Summary:	A fast and easy-to-use status bar
 License:	MIT
