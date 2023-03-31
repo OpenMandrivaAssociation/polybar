@@ -2,7 +2,7 @@
 
 Name:		polybar
 Version:	3.5.4
-Release:	1
+Release:	2
 Summary:	A fast and easy-to-use status bar
 License:	MIT
 URL:		https://github.com/polybar/polybar
