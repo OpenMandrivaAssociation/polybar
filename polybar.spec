@@ -13,6 +13,7 @@ BuildRequires:  cmake
 BuildRequires:  cmake(jsoncpp)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libpulse)
 #BuildRequires:  wireless-tools
