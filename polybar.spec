@@ -24,7 +24,7 @@ BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  fonts-ttf-unifont
-BuildRequires:  python2-devel
+BuildRequires:  python3dist(sphinx)
 BuildRequires:  x11-font-misc
 Requires:	fonts-ttf-unifont
 Requires:	x11-font-misc
