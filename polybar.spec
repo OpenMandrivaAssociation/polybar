@@ -56,7 +56,7 @@ mv xpp-%{xpp_commit} lib/xpp
 %dir %{_datadir}/zsh/site-functions
 %{_bindir}/%{name}
 %{_bindir}/%{name}-msg
-%{_datadir}/doc/%{name}/config
+#{_datadir}/doc/%{name}/config
 #% {_mandir}/man1/%{name}.1*
 %{_datadir}/bash-completion/completions/%{name}
 %{_datadir}/zsh/site-functions/_%{name}
