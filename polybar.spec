@@ -1,12 +1,12 @@
 %define xpp_commit 044e69d05db7f89339bda1ccd1efe0263b01c8f6
 
 Name:		polybar
-Version:	3.5.4
-Release:	2
+Version:	3.7.0
+Release:	1
 Summary:	A fast and easy-to-use status bar
 License:	MIT
 URL:		https://github.com/polybar/polybar
-Source0:	https://github.com/polybar/polybar/archive/%{version}.tar.gz
+Source0:	https://github.com/polybar/polybar/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:	https://github.com/polybar/xpp/archive/%{xpp_commit}.zip
 
 BuildRequires:  cmake
