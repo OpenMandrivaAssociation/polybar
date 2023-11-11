@@ -49,11 +49,13 @@ mv xpp-%{xpp_commit} lib/xpp
 %make_install -C build
 
 %files
+%doc %{_datadir}/doc/polybar/
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions
 %dir %{_datadir}/doc/%{name}
 %dir %{_datadir}/zsh/
 %dir %{_datadir}/zsh/site-functions
+%{_sysconfdir}/polybar/config.ini
 %{_bindir}/%{name}
 %{_bindir}/%{name}-msg
 #{_datadir}/doc/%{name}/config
@@ -61,3 +63,6 @@ mv xpp-%{xpp_commit} lib/xpp
 %{_datadir}/bash-completion/completions/%{name}
 %{_datadir}/zsh/site-functions/_%{name}
 %{_datadir}/zsh/site-functions/_%{name}_msg
+%{_mandir}/man1/polybar-msg.1.*
+%{_mandir}/man1/polybar.1.*
+%{_mandir}/man5/polybar.5.*
