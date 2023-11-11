@@ -52,7 +52,6 @@ mv xpp-%{xpp_commit} lib/xpp
 %doc %{_datadir}/doc/polybar/
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions
-%dir %{_datadir}/doc/%{name}
 %dir %{_datadir}/zsh/
 %dir %{_datadir}/zsh/site-functions
 %{_sysconfdir}/polybar/config.ini
