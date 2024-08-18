@@ -1,7 +1,7 @@
 %define xpp_commit 044e69d05db7f89339bda1ccd1efe0263b01c8f6
 
 Name:		polybar
-Version:	3.7.1
+Version:	3.7.2
 Release:	1
 Summary:	A fast and easy-to-use status bar
 License:	MIT
