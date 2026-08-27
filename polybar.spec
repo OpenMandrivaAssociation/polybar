@@ -12,6 +12,9 @@ Source0:	https://github.com/polybar/polybar/archive/%{version}/%{name}-%{version
 Source1:        %{url}/i3ipcpp/archive/i3ipcpp-%{i3ipcpp_commit}.tar.gz
 Source2:        %{url}/xpp/archive/xpp-%{xpp_commit}.tar.gz
 
+Patch0:    https://src.fedoraproject.org/rpms/polybar/raw/rawhide/f/0000-include-cstdint.patch
+Patch2:    https://src.fedoraproject.org/rpms/polybar/raw/rawhide/f/0001-link-freetype.patch
+
 BuildRequires:  make
 BuildRequires:  cmake
 BuildRequires:  cmake(jsoncpp)
