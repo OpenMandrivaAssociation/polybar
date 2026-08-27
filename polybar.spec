@@ -1,13 +1,22 @@
-%define xpp_commit 044e69d05db7f89339bda1ccd1efe0263b01c8f6
+# Git submodules
+#   * i3ipcpp
+%global commit1         0daa58349ab3373161a4a73c1ccd2822328d2c73
+%global shortcommit1    %(c=%{commit1}; echo ${c:0:7})
+
+#   * xpp
+%global commit2         a8b9e682ba65ca4a6d805c8be97c5232bae3c0c1
+%global shortcommit2    %(c=%{commit2}; echo ${c:0:7})
 
 Name:		polybar
 Version:	3.7.2
-Release:	1
+Release:	2
 Summary:	A fast and easy-to-use status bar
 License:	MIT
 URL:		https://github.com/polybar/polybar
 Source0:	https://github.com/polybar/polybar/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:	https://github.com/polybar/xpp/archive/%{xpp_commit}.zip
+# Bundled libs
+Source1:        %{url}/i3ipcpp/archive/%{commit1}/i3ipcpp-%{shortcommit1}.tar.gz
+Source2:        %{url}/xpp/archive/%{commit2}/xpp-%{shortcommit2}.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  cmake(jsoncpp)
@@ -19,27 +28,37 @@ BuildRequires:  pkgconfig(libpulse)
 #BuildRequires:  wireless-tools
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(xcb-xrm)
 BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-icccm)
+BuildRequires:  pkgconfig(xcb-image)
+BuildRequires:  pkgconfig(xcb-xrm)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  fonts-ttf-unifont
 BuildRequires:  python3dist(sphinx)
 BuildRequires:  x11-font-misc
+# Optional BR:
+BuildRequires:  xcb-xkb
+BuildRequires:  i3-wm
+BuildRequires:  pkgconfig(jsoncpp)
+BuildRequires:  pkgconfig(libmpdclient)
+
 Requires:	fonts-ttf-unifont
 Requires:	x11-font-misc
+
+Provides:       bundled(i3ipcpp) = 0.7.1~git%{shortcommit1}
+Provides:       bundled(xpp) = 1.4.0~git%{shortcommit2}
 
 %description
 A fast and easy-to-use status bar
 
 %prep
-%autosetup -a 1
-# Submodule path 'lib/i3ipcpp': checked out '21ce9060ac7c502225fdbd2f200b1cbdd8eca08d'
-# Submodule path 'lib/xpp': checked out 'd2ff2aaba6489f606bbcc090c0a78a8a3f9fcd1f'
+%autosetup -a 2 -p1
 
-rm -rf lib/xpp
-mv xpp-%{xpp_commit} lib/xpp
+mv i3ipcpp-%{commit1}/* lib/i3ipcpp
+mv xpp-%{commit2}/*     lib/xpp
 
 %build
 %cmake
