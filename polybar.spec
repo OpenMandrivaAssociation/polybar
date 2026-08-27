@@ -31,7 +31,7 @@ BuildRequires:  fonts-ttf-unifont
 BuildRequires:  python3dist(sphinx)
 BuildRequires:  x11-font-misc
 # Optional BR:
-BuildRequires:  xcb-xkb
+BuildRequires:  %{_lib}xcb-xkb1
 BuildRequires:  i3-wm
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libmpdclient)
