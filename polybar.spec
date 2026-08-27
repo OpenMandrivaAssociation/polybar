@@ -9,6 +9,7 @@ Source0:	https://github.com/polybar/polybar/archive/%{version}/%{name}-%{version
 Source1:        %{url}/i3ipcpp/archive/i3ipcpp-0daa58349ab3373161a4a73c1ccd2822328d2c73.tar.gz
 Source2:        %{url}/xpp/archive/xpp-a8b9e682ba65ca4a6d805c8be97c5232bae3c0c1.tar.gz
 
+BuildRequires:  make
 BuildRequires:  cmake
 BuildRequires:  cmake(jsoncpp)
 BuildRequires:  pkgconfig(libsystemd)
