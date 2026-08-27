@@ -1,14 +1,21 @@
-%define xpp_commit 044e69d05db7f89339bda1ccd1efe0263b01c8f6
+%global i3ipcpp_commit 0daa58349ab3373161a4a73c1ccd2822328d2c73
+%global xpp_commit a8b9e682ba65ca4a6d805c8be97c5232bae3c0c1
 
 Name:		polybar
 Version:	3.7.2
-Release:	1
+Release:	2
 Summary:	A fast and easy-to-use status bar
 License:	MIT
 URL:		https://github.com/polybar/polybar
 Source0:	https://github.com/polybar/polybar/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:	https://github.com/polybar/xpp/archive/%{xpp_commit}.zip
+# Bundled libs
+Source1:        %{url}/i3ipcpp/archive/i3ipcpp-%{i3ipcpp_commit}.tar.gz
+Source2:        %{url}/xpp/archive/xpp-%{xpp_commit}.tar.gz
 
+Patch0:    https://src.fedoraproject.org/rpms/polybar/raw/rawhide/f/0000-include-cstdint.patch
+Patch2:    https://src.fedoraproject.org/rpms/polybar/raw/rawhide/f/0001-link-freetype.patch
+
+BuildRequires:  make
 BuildRequires:  cmake
 BuildRequires:  cmake(jsoncpp)
 BuildRequires:  pkgconfig(libsystemd)
@@ -19,27 +26,43 @@ BuildRequires:  pkgconfig(libpulse)
 #BuildRequires:  wireless-tools
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(xcb-xrm)
 BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-icccm)
+BuildRequires:  pkgconfig(xcb-image)
+BuildRequires:  pkgconfig(xcb-xrm)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  fonts-ttf-unifont
 BuildRequires:  python3dist(sphinx)
 BuildRequires:  x11-font-misc
+# Optional BR:
+BuildRequires:  %{_lib}xcb-xkb1
+BuildRequires:  i3-wm
+BuildRequires:  pkgconfig(jsoncpp)
+BuildRequires:  pkgconfig(libmpdclient)
+
 Requires:	fonts-ttf-unifont
 Requires:	x11-font-misc
+
+Provides:       bundled(i3ipcpp) = 0.7.1
+Provides:       bundled(xpp) = 1.4.0
 
 %description
 A fast and easy-to-use status bar
 
 %prep
-%autosetup -a 1
-# Submodule path 'lib/i3ipcpp': checked out '21ce9060ac7c502225fdbd2f200b1cbdd8eca08d'
-# Submodule path 'lib/xpp': checked out 'd2ff2aaba6489f606bbcc090c0a78a8a3f9fcd1f'
+%setup -q
+%setup -q -D -T -a1
+%setup -q -D -T -a2
 
+rm -rf lib/i3ipcpp
+mv i3ipcpp-%{i3ipcpp_commit} lib/i3ipcpp
 rm -rf lib/xpp
 mv xpp-%{xpp_commit} lib/xpp
+
+%autopatch -p1
 
 %build
 %cmake
