@@ -62,6 +62,8 @@ mv i3ipcpp-%{i3ipcpp_commit} lib/i3ipcpp
 rm -rf lib/xpp
 mv xpp-%{xpp_commit} lib/xpp
 
+%autopatch -p1
+
 %build
 %cmake
 %make_build
