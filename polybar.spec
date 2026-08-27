@@ -1,3 +1,6 @@
+%global i3ipcpp_commit 0daa58349ab3373161a4a73c1ccd2822328d2c73
+%global xpp_commit a8b9e682ba65ca4a6d805c8be97c5232bae3c0c1
+
 Name:		polybar
 Version:	3.7.2
 Release:	2
@@ -6,8 +9,8 @@ License:	MIT
 URL:		https://github.com/polybar/polybar
 Source0:	https://github.com/polybar/polybar/archive/%{version}/%{name}-%{version}.tar.gz
 # Bundled libs
-Source1:        %{url}/i3ipcpp/archive/i3ipcpp-0daa58349ab3373161a4a73c1ccd2822328d2c73.tar.gz
-Source2:        %{url}/xpp/archive/xpp-a8b9e682ba65ca4a6d805c8be97c5232bae3c0c1.tar.gz
+Source1:        %{url}/i3ipcpp/archive/i3ipcpp-%{i3ipcpp_commit}.tar.gz
+Source2:        %{url}/xpp/archive/xpp-%{xpp_commit}.tar.gz
 
 BuildRequires:  make
 BuildRequires:  cmake
@@ -51,8 +54,10 @@ A fast and easy-to-use status bar
 %setup -q -D -T -a1
 %setup -q -D -T -a2
 
-mv i3ipcpp-* lib/i3ipcpp
-mv xpp-*     lib/xpp
+rm -rf lib/i3ipcpp
+mv i3ipcpp-%{i3ipcpp_commit} lib/i3ipcpp
+rm -rf lib/xpp
+mv xpp-%{xpp_commit} lib/xpp
 
 %build
 %cmake
