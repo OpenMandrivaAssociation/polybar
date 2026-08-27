@@ -46,8 +46,10 @@ Provides:       bundled(xpp) = 1.4.0
 A fast and easy-to-use status bar
 
 %prep
-%autosetup -a 1 -a 2 -p1
+%autosetup -p1
 
+tar xf %{S:1}
+tar xf %{S:2}
 mv i3ipcpp-* lib/i3ipcpp
 mv xpp-*     lib/xpp
 
